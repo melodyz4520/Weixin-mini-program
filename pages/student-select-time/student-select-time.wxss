@@ -1,0 +1,297 @@
+.page {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding-bottom: 140rpx;
+}
+
+.header {
+  padding-top: env(safe-area-inset-top);
+  background: #fff;
+  border-bottom: 1rpx solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 88rpx;
+}
+
+.header__back {
+  position: absolute;
+  left: 24rpx;
+  top: env(safe-area-inset-top);
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 24rpx;
+  font-size: 40rpx;
+  color: #333;
+}
+
+.header__title {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #1a1a1a;
+}
+
+.scroll {
+  height: calc(100vh - 88rpx - 120rpx);
+}
+
+.tutor-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  margin: 24rpx;
+  padding: 28rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.06);
+}
+
+.tutor-card__avatar-wrap {
+  position: relative;
+  margin-right: 24rpx;
+}
+
+.tutor-card__avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: #e8e8e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48rpx;
+}
+
+.tutor-card__dot {
+  position: absolute;
+  right: 4rpx;
+  bottom: 4rpx;
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  background: #07c160;
+  border: 4rpx solid #fff;
+}
+
+.tutor-card__info {
+  flex: 1;
+}
+
+.tutor-card__name {
+  display: block;
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.tutor-card__courses {
+  display: block;
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 6rpx;
+}
+
+.tutor-card__school {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.wechat-hint {
+  background: #f8f8f8;
+  margin: 0 24rpx 24rpx;
+  padding: 24rpx;
+  border-radius: 12rpx;
+}
+
+.wechat-hint__title {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.wechat-hint__desc {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.calendar-section {
+  background: #fff;
+  margin: 0 24rpx 24rpx;
+  padding: 24rpx;
+  border-radius: 16rpx;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24rpx;
+}
+
+.calendar-nav {
+  width: 60rpx;
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+  font-size: 36rpx;
+  color: #1A2E6B;
+}
+
+.calendar-month {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.calendar-week {
+  display: flex;
+  margin-bottom: 16rpx;
+}
+
+.calendar-weekday {
+  flex: 1;
+  text-align: center;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.calendar-days {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.calendar-day {
+  width: calc(100% / 7);
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26rpx;
+  color: #333;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.calendar-day--empty {
+  color: transparent;
+}
+
+.calendar-day--selected {
+  background: #1A2E6B;
+  color: #fff;
+  border-radius: 50%;
+}
+
+.calendar-day--has .calendar-day__dot {
+  position: absolute;
+  bottom: 8rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8rpx;
+  height: 8rpx;
+  border-radius: 50%;
+  background: #f5a623;
+}
+
+.calendar-tz {
+  display: block;
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 16rpx;
+  text-align: center;
+}
+
+.slots-section {
+  background: #fff;
+  margin: 0 24rpx 24rpx;
+  padding: 24rpx;
+  border-radius: 16rpx;
+}
+
+.slots-title {
+  display: block;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.slots-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+}
+
+.slot-item {
+  width: calc(50% - 10rpx);
+  padding: 24rpx;
+  background: #f8f8f8;
+  border: 2rpx solid #eee;
+  border-radius: 12rpx;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.slot-item--selected {
+  border-color: #1A2E6B;
+  background: #E8EEF8;
+}
+
+.slot-check {
+  position: absolute;
+  top: 12rpx;
+  right: 12rpx;
+  color: #1A2E6B;
+  font-size: 28rpx;
+}
+
+.slot-time {
+  display: block;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.slot-duration {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20rpx 24rpx;
+  padding-bottom: calc(env(safe-area-inset-bottom) + 20rpx);
+  background: #fff;
+  border-top: 1rpx solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer__label {
+  display: block;
+  font-size: 22rpx;
+  color: #999;
+  margin-bottom: 4rpx;
+}
+
+.footer__value {
+  font-size: 26rpx;
+  color: #333;
+}
+
+.footer__btn {
+  padding: 24rpx 40rpx;
+  background: #1A2E6B;
+  color: #fff;
+  font-size: 28rpx;
+  font-weight: 500;
+  border-radius: 40rpx;
+}

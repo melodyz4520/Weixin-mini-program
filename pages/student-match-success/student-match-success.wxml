@@ -1,0 +1,48 @@
+<view class="page">
+  <view class="success-header">
+    <view class="success-icon">✓</view>
+    <text class="success-title">成功匹配Tutor!</text>
+    <text class="success-desc">匹配成功! 团队人员会及时联系、拉群。请确保您的微信号填写正确。</text>
+  </view>
+
+  <view class="card">
+    <view class="card__course">
+      <view class="card__course-img">
+        <view class="card__course-badge">CS 61A</view>
+      </view>
+      <text class="card__course-name">{{courseTitle}}</text>
+    </view>
+    <view class="card__tutor">
+      <text class="card__label">专属导师</text>
+      <view class="card__tutor-row">
+        <view class="card__tutor-avatar">🧸</view>
+        <view class="card__tutor-info">
+          <text class="card__tutor-name">{{tutorName}}</text>
+          <text class="card__tutor-meta">☆{{rating}} ({{sessionCount}}次辅导)</text>
+        </view>
+      </view>
+    </view>
+    <view class="card__row">
+      <text class="card__icon">📅</text>
+      <view>
+        <text class="card__main">{{dateTime}}</text>
+        <text class="card__sub">{{duration}}</text>
+      </view>
+    </view>
+    <view class="card__row">
+      <text class="card__icon">📍</text>
+      <view>
+        <text class="card__main">地点: {{location}}</text>
+        <text class="card__sub">团队人员会及时联系</text>
+      </view>
+    </view>
+  </view>
+
+  <button class="btn-back" bindtap="onBack">返回</button>
+
+  <view class="footer" bindtap="onHonorCode">
+    <text class="footer-text">参与同伴辅导即表示您同意遵守 </text>
+    <text class="footer-link">学术诚信守则 (Academic Honor Code)</text>
+    <text class="footer-text">。诚信是我们社区的基石。</text>
+  </view>
+</view>

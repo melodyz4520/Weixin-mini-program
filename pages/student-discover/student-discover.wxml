@@ -1,0 +1,84 @@
+<view class="page">
+  <view class="header">
+    <view class="header__back" bindtap="onBack">←</view>
+    <text class="header__title">发现导师与课程</text>
+  </view>
+
+  <view class="tabs">
+    <view class="tab {{browseMode === 'course' ? 'tab--active' : ''}}" bindtap="onBrowseCourse">按课程浏览</view>
+    <view class="tab {{browseMode === 'tutor' ? 'tab--active' : ''}}" bindtap="onBrowseTutor">按导师浏览</view>
+  </view>
+
+  <view class="search-wrap">
+    <text class="search-icon">🔍</text>
+    <input class="search-input" placeholder="搜索课程编号或导师姓名" value="{{searchKeyword}}" bindinput="onSearchInput" />
+  </view>
+
+  <scroll-view class="scroll" scroll-y wx:if="{{browseMode === 'tutor'}}">
+    <view class="tutor-list">
+      <view class="tutor-card" wx:for="{{filteredTutors}}" wx:key="id">
+        <view class="tutor-card__left">
+          <view class="tutor-card__avatar">👤</view>
+          <view class="tutor-card__info">
+            <text class="tutor-card__name">{{item.name}}</text>
+            <text class="tutor-card__meta">{{item.major}}{{item.certified ? '·已认证' : ''}}</text>
+            <view class="tutor-card__rating">
+              <text wx:if="{{item.rating}}" class="star">★</text>
+              <text wx:if="{{item.rating}}" class="rating">{{item.rating}} ({{item.reviewCount}})</text>
+              <text wx:else class="rating-new">New</text>
+            </view>
+            <view class="tutor-card__tags">
+              <text class="tag" wx:for="{{item.courses}}" wx:key="*this" wx:for-item="c">{{c}}</text>
+            </view>
+            <text class="tutor-card__free">最近空闲时间: {{item.nextFree}}</text>
+          </view>
+        </view>
+        <view class="tutor-card__right">
+          <button class="btn-book {{item.available ? '' : 'btn-book--disabled'}}" disabled="{{!item.available}}" data-id="{{item.id}}"
+            bindtap="onBookTutor">{{item.available ? '立即预约' : '暂无空闲'}}</button>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <scroll-view class="scroll" scroll-y wx:if="{{browseMode === 'course'}}">
+    <view class="section">
+      <text class="section-title">热门学科分类</text>
+      <view class="subject-grid">
+        <view class="subject-card" wx:for="{{subjects}}" wx:key="id" data-title="{{item.title}}" bindtap="onSubjectTap"
+          style="background: {{item.bg}}">
+          <text class="subject-icon">{{item.icon}}</text>
+          <text class="subject-title">{{item.title}}</text>
+          <text class="subject-count">{{item.count}} 位导师</text>
+        </view>
+      </view>
+    </view>
+    <view class="section">
+      <text class="section-title">热门课程分类</text>
+      <view class="course-list">
+        <view class="course-row" wx:for="{{courses}}" wx:key="id">
+          <view class="course-row__left">
+            <view class="course-tag">{{item.id}}</view>
+            <view class="course-info">
+              <text class="course-name">{{item.name}}</text>
+              <text class="course-desc">{{item.desc}}</text>
+              <text class="course-online">{{item.onlineCount}}位导师在线</text>
+            </view>
+          </view>
+          <view class="btn-view" data-name="{{item.name}}" bindtap="onViewTutorsByCourse">查看导师</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="tabbar">
+    <view class="tabbar-item tabbar-item--active">
+      <text class="tabbar-icon">🔍</text>
+      <text class="tabbar-text">找导师</text>
+    </view>
+    <view class="tabbar-item" bindtap="onProfile">
+      <text class="tabbar-icon">👤</text>
+      <text class="tabbar-text">个人中心</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,152 @@
+<!--pages/tutor-certification/tutor-certification.wxml-->
+<view class="page">
+  <view class="header">
+    <view class="header__inner">
+      <view class="header__back" bindtap="onBack">←</view>
+      <text class="header__title">导师认证详情填写</text>
+    </view>
+  </view>
+
+  <view class="steps">
+    <view
+      wx:for="{{steps}}"
+      wx:key="*this"
+      class="step-tab {{stepIndex === index ? 'step-tab--active' : ''}}"
+      data-index="{{index}}"
+      bindtap="onStepTap"
+    >{{item}}</view>
+  </view>
+
+  <scroll-view class="scroll" scroll-y scroll-into-view="{{scrollToId}}" scroll-with-animation>
+    <view class="status-banner">
+      <view class="status-banner__icon">✓</view>
+      <view class="status-banner__text">
+        <text class="status-banner__title">{{statusText}}</text>
+        <text class="status-banner__msg">{{statusMessage}}</text>
+      </view>
+    </view>
+
+    <view class="section">
+      <text class="section__title">基本信息</text>
+      <view class="avatar-wrap" bindtap="onAvatarTap">
+        <image wx:if="{{avatarUrl}}" class="avatar-img" src="{{avatarUrl}}" mode="aspectFill" />
+        <text wx:else class="avatar-placeholder">👤</text>
+        <text class="avatar-hint">点击上传头像</text>
+      </view>
+      <view class="form-item">
+        <text class="form-label">昵称</text>
+        <input class="form-input" placeholder="请输入您的昵称" value="{{nickname}}" bindinput="onNicknameInput" />
+      </view>
+      <view class="form-item">
+        <text class="form-label">毕业年份</text>
+        <view class="form-picker" bindtap="onGraduationYearTap">
+          <text class="{{graduationYear ? '' : 'placeholder'}}">{{graduationYear || '请选择毕业年份'}}</text>
+        </view>
+      </view>
+      <view class="form-item">
+        <text class="form-label">真实姓名</text>
+        <text class="form-hint">(仅供审核使用,不会公开)</text>
+        <input class="form-input" placeholder="请输入您的真实姓名" value="{{realName}}" bindinput="onRealNameInput" />
+      </view>
+      <view class="form-item">
+        <text class="form-label">微信号</text>
+        <text class="form-hint">我们会私信联系,请确保可搜索喔</text>
+        <input class="form-input" placeholder="请输入微信号" value="{{wechatId}}" bindinput="onWechatIdInput" />
+      </view>
+    </view>
+
+    <view class="section" id="section-0">
+      <view class="section__head">
+        <text class="section__title">第一步: 专业领域</text>
+        <text class="section__tag">多选</text>
+      </view>
+      <text class="section__desc">请选择您有资格辅导的课程。要求最低成绩为A-。</text>
+      <view class="chips">
+        <view
+          wx:for="{{courses}}"
+          wx:key="id"
+          class="chip {{item.selected ? 'chip--selected' : ''}}"
+          data-id="{{item.id}}"
+          bindtap="onCourseTap"
+        >
+          <text wx:if="{{item.selected}}" class="chip-check">✓</text>
+          <text class="chip-text">{{item.name}}</text>
+        </view>
+        <view class="chip chip--add" bindtap="onAddCourseTap">
+          <text class="chip-text">+ 手动添加课程编号</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="section" id="section-1">
+      <text class="section__title">第二步: 证明材料</text>
+      <text class="section__desc">CalCentral 成绩单</text>
+      <text class="section__hint">须显示全名及学期成绩。</text>
+      <view class="upload-area" wx:if="{{!transcriptUrl}}" bindtap="onTranscriptTap">
+        <text class="upload-icon">📄</text>
+        <text class="upload-text">点击上传成绩单</text>
+      </view>
+      <view class="uploaded-file" wx:else>
+        <text class="uploaded-name">{{transcriptName}}</text>
+        <text class="uploaded-status">已上传</text>
+        <view class="uploaded-actions">
+          <text class="uploaded-btn" bindtap="onReplaceTranscript">更换</text>
+          <text class="uploaded-btn" bindtap="onDeleteTranscript">删除</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="section" id="section-2">
+      <view class="section__head">
+        <text class="section__title">第三步: 排班设置</text>
+        <view class="legend">
+          <view class="legend-item"><view class="legend-box legend-box--selected"></view><text>已选</text></view>
+          <view class="legend-item"><view class="legend-box"></view><text>空闲</text></view>
+        </view>
+      </view>
+      <view class="schedule-table">
+        <view class="schedule-row schedule-row--head">
+          <view class="schedule-cell schedule-cell--time">时间</view>
+          <view class="schedule-cell" wx:for="{{weekdays}}" wx:key="*this">{{item}}</view>
+        </view>
+        <view class="schedule-row" wx:for="{{timeSlots}}" wx:key="*this" wx:for-index="timeIdx" wx:for-item="time">
+          <view class="schedule-cell schedule-cell--time">{{time}}</view>
+          <view
+            wx:for="{{weekdays}}"
+            wx:for-item="wd"
+            wx:key="*this"
+            wx:for-index="wdIdx"
+            class="schedule-cell schedule-cell--slot {{schedule[wdIdx + '-' + timeIdx] ? 'schedule-cell--selected' : ''}}"
+            data-key="{{wdIdx + '-' + timeIdx}}"
+            bindtap="onSlotTap"
+          ></view>
+        </view>
+      </view>
+    </view>
+
+    <view class="submit-wrap">
+      <button class="btn-submit" bindtap="onSubmit">提交审核</button>
+    </view>
+  </scroll-view>
+
+  <view class="year-picker-mask" wx:if="{{showYearPicker}}" catchtap="onYearPickerMaskTap"></view>
+  <view class="year-picker-list" wx:if="{{showYearPicker}}">
+    <view
+      class="year-picker-item {{graduationYear === item ? 'year-picker-item--active' : ''}}"
+      wx:for="{{yearOptions}}"
+      wx:key="*this"
+      data-year="{{item}}"
+      bindtap="onYearSelect"
+    >{{item}}</view>
+  </view>
+
+  <view class="add-course-mask" wx:if="{{showAddCourse}}" catchtap="onAddCourseCancel"></view>
+  <view class="add-course-popup" wx:if="{{showAddCourse}}">
+    <text class="add-course-title">添加课程编号</text>
+    <input class="add-course-input" placeholder="请输入课程编号，如 CS 61A" value="{{addCourseInput}}" bindinput="onAddCourseInput" />
+    <view class="add-course-btns">
+      <view class="add-course-btn add-course-btn--cancel" bindtap="onAddCourseCancel">取消</view>
+      <view class="add-course-btn add-course-btn--confirm" bindtap="onAddCourseConfirm">确定</view>
+    </view>
+  </view>
+</view>

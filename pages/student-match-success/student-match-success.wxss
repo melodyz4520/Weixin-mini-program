@@ -1,0 +1,166 @@
+.page {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding: 48rpx 32rpx 120rpx;
+  box-sizing: border-box;
+}
+
+.success-header {
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.success-icon {
+  width: 120rpx;
+  height: 120rpx;
+  margin: 0 auto 24rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FFE082 0%, #FFCA28 100%);
+  color: #fff;
+  font-size: 72rpx;
+  line-height: 120rpx;
+  text-align: center;
+  box-shadow: 0 8rpx 24rpx rgba(255, 193, 7, 0.35);
+}
+
+.success-title {
+  display: block;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+.success-desc {
+  display: block;
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.5;
+}
+
+.card {
+  background: #FFFEF5;
+  border-radius: 20rpx;
+  padding: 0 0 32rpx;
+  margin-bottom: 40rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.06);
+}
+
+.card__course-img {
+  height: 240rpx;
+  background: linear-gradient(180deg, #E8F5E9 0%, #C8E6C9 100%);
+  position: relative;
+}
+
+.card__course-badge {
+  position: absolute;
+  left: 24rpx;
+  bottom: 24rpx;
+  padding: 10rpx 20rpx;
+  background: #FFC107;
+  color: #fff;
+  font-size: 26rpx;
+  font-weight: bold;
+  border-radius: 8rpx;
+}
+
+.card__course-name {
+  display: block;
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #333;
+  padding: 24rpx 24rpx 16rpx;
+}
+
+.card__label {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+  padding: 0 24rpx 12rpx;
+}
+
+.card__tutor-row {
+  display: flex;
+  align-items: center;
+  padding: 0 24rpx 24rpx;
+}
+
+.card__tutor-avatar {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 50%;
+  background: #e8e8e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+  margin-right: 20rpx;
+}
+
+.card__tutor-name {
+  display: block;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 4rpx;
+}
+
+.card__tutor-meta {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.card__row {
+  display: flex;
+  align-items: flex-start;
+  padding: 16rpx 24rpx;
+}
+
+.card__icon {
+  font-size: 32rpx;
+  margin-right: 16rpx;
+}
+
+.card__main {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 4rpx;
+}
+
+.card__sub {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.btn-back {
+  width: 100%;
+  height: 96rpx;
+  line-height: 96rpx;
+  background: #1A2E6B;
+  color: #fff;
+  font-size: 32rpx;
+  border-radius: 48rpx;
+  border: none;
+}
+
+.btn-back::after {
+  border: none;
+}
+
+.footer {
+  margin-top: 48rpx;
+  padding: 0 16rpx;
+  text-align: center;
+}
+
+.footer-text {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.footer-link {
+  font-size: 22rpx;
+  color: #1A2E6B;
+}

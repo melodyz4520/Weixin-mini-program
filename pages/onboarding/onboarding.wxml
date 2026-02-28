@@ -1,0 +1,53 @@
+<!--pages/onboarding/onboarding.wxml-->
+<view class="page">
+  <image class="bg-image" src="/image.png" mode="aspectFill" />
+  <view class="bg-overlay"></view>
+
+  <scroll-view class="scrollarea" scroll-y>
+    <view class="content">
+      <!-- Header -->
+      <view class="header">
+        <view class="title-row">
+          <text class="title">欢迎来到 </text>
+          <text class="title title--bold">UCB卷王联盟</text>
+        </view>
+        <text class="subtitle">请在下方选择你的身份。</text>
+      </view>
+
+      <!-- Role Cards -->
+      <view class="cards">
+        <!-- Tutor Card -->
+        <view class="card" bindtap="selectTutor">
+          <view class="card__icon-wrap card__icon-wrap--tutor">
+            <image class="card__icon card__icon--img" src="../../assets/icons/graduation-cap.svg" mode="aspectFit" />
+          </view>
+          <text class="card__title" wx:if="{{!tutorSubmitted}}">成为Tutor</text>
+          <text class="card__title" wx:else>审核已提交</text>
+          <text class="card__desc" wx:if="{{!tutorSubmitted}}">欢迎伯克利在读学生、校友, 辅导STEM课程、提供经验帮助!</text>
+          <text class="card__desc" wx:else>您的导师认证已提交，正在审核中。可点击查看或修改资料。</text>
+          <text class="card__cta card__cta--tutor" wx:if="{{!tutorSubmitted}}">继续成为Tutor →</text>
+          <text class="card__cta card__cta--tutor" wx:else>查看 →</text>
+        </view>
+
+        <!-- Student Card -->
+        <view class="card" bindtap="selectStudent">
+          <view class="card__icon-wrap card__icon-wrap--student">
+            <image class="card__icon card__icon--img" src="../../assets/icons/book.svg" mode="aspectFit" />
+          </view>
+          <text class="card__title">成为Student</text>
+          <text class="card__desc">欢迎伯克利在校学生,接收STEM辅导,加入1v1线上教学课。</text>
+          <text class="card__cta card__cta--student">成为Student →</text>
+        </view>
+      </view>
+
+      <!-- Bottom: Login & Privacy -->
+      <view class="bottom">
+        <button class="btn-login" bindtap="onWechatLogin">微信授权登录</button>
+        <view class="privacy" bindtap="onPrivacyTap">
+          <text class="privacy__text">登录即代表同意 </text>
+          <text class="privacy__link">隐私条款协议</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

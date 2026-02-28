@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/onboarding/onboarding","pages/index/index","pages/privacy/privacy","pages/tutor-certification/tutor-certification","pages/tutor-cert-result/tutor-cert-result","pages/student-discover/student-discover","pages/student-select-time/student-select-time","pages/student-match-success/student-match-success","pages/student-profile/student-profile"
   ],
   "window": {
     "navigationBarTextStyle": "black",
